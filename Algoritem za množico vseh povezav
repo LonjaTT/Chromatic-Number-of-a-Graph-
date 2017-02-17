@@ -25,7 +25,7 @@ def kromaticno(G):
         x[0,q] = x[0,q] + 1
         velja=True
         for (i,j) in G:
-            if x[0,i] == x[0,j]:
+            if x[0,(i-1)] == x[0,(j-1)]:
                 velja=False
         if velja==True:
             s = 1
