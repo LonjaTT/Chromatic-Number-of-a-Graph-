@@ -1,0 +1,38 @@
+#G je množica vseh povezav v grafu(npr. G=((1,2),(3,2),(1,4)))
+#Privzemamo, da če je največja številka 5 imamo v grafu vse točke od 1 do 5 (drugače bi pretvorili)
+
+def kromaticno(G):
+    z = 1
+    for P in G:
+        for j in P:
+            if j > z:
+                z=j
+    stevilo = z
+    resitev = []
+    x = matrix(1,z)
+    for i in range(z):
+        x[0,i] = 1
+    for j in range(2,z^z):
+        q = 0
+        spr = True
+        for f in range(z):
+            if spr == True:
+                if x[0,f] == z:
+                    x[0,f] = 1
+                    q = q+1
+                else:
+                    spr = False
+        x[0,q] = x[0,q] + 1
+        velja=True
+        for (i,j) in G:
+            if x[0,i] == x[0,j]:
+                velja=False
+        if velja==True:
+            s = 1
+            for k in range(z):
+                if x[0,k] > s:
+                    s = x[0,k]
+            if s < stevilo:
+                stevilo = s
+                resitev = x
+    return(resitev,'\n\n',stevilo)
