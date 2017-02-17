@@ -36,3 +36,17 @@ def kromaticno(G):
                 stevilo = s
                 resitev = x
     return(resitev,'\n\n',stevilo)
+
+
+#G množica povezav v grafu
+def pretvori(G):
+    z = 1
+    for P in G:
+        for j in P:
+            if j > z:
+                z=j
+    A=matrix(z)
+    for (i,j) in G:
+        A[(i-1),(j-1)]=1
+        A[(j-1),(i-1)]=1
+    return A
