@@ -1,0 +1,39 @@
+def kromaticno_st(A):
+    z=A.nrows()
+    stevilo=z
+    resitev=[]
+    for i in range(z):
+        x_i = 1
+    for j in range(2,z^z):
+        q = 0
+        spr = True
+        for f in range(z):
+            if spr == True:
+                if x_f == z:
+                    x_f = 1
+                    q = q+1
+                else:
+                    spr = False
+        x_q = x_q + 1
+        velja=True
+        for s in range(z):
+            for t in range(s,z):
+                if A[s,t] == 1:
+                    if x_s == x_t:
+                        velja=False
+        if velja==TRUE:
+            s = 1
+            for k in range(z):
+                if x_k > s:
+                    s = x_k
+            if s < stevilo:
+                stevilo = s
+                res=[]
+                for m in range(z):
+                    res = res +[x_m]
+                resitev = res
+    return(resitev)
+A = matrix([[0,1,0,1],[1,0,1,0],[0,1,0,1],[1,0,1,0]])
+G = Graph(A)
+G.show()
+kromaticno_st(A)
