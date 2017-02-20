@@ -7,7 +7,11 @@ def kombinacije(k,n):
     komb=[]
     for i in range(k):
         A[0,i]=1
-    for j in range(z):
+    if z>k:
+        a=k
+    else:
+        a=z
+    for j in range(a):
         x=matrix(1,k)
         for m in range(j+1):
             if m==0:
@@ -22,6 +26,8 @@ def kombinacije(k,n):
             while desno:
                 if x[0,0]==x[0,t+1]:
                     t=t+1
+                    if t==k-1:
+                        desno=False
                 else:
                     desno=False
             spr2=False
@@ -42,9 +48,9 @@ def kombinacije(k,n):
                 ali=False
     return komb
 
-kombinacije(4,5)
-︡16d7da97-535d-4bf5-b89f-3ead9b2c0b60︡{"stdout":"[[2 1 1 1]]\n"}︡{"done":true}︡
-︠b10607d7-856c-48db-ba6b-c6a72d304f21s︠
+kombinacije(4,11)
+︡e283374e-3285-4a4c-a0a9-daf760396bf6︡{"stdout":"[[8 1 1 1], [7 2 1 1], [6 3 1 1], [5 4 1 1], [6 2 2 1], [5 3 2 1], [4 4 2 1], [4 3 3 1], [5 2 2 2], [4 3 2 2], [3 3 3 2]]\n"}︡{"done":true}︡
+
 #M = množica velikosti množic točk n-obarvljivega grafa#
 #npr. graf je 4 obarvljiv, M je lahko (1,1,1,3) kar pomeni, da ima graf 1 točko obarvano s 1. barvo, 1 točko z 2., 1 točko s 3. barvo in 3 točke s četrto barvo#
 #M=(2,2,3,1)#
