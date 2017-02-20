@@ -1,18 +1,5 @@
-Če bi delala popolnoma po pravilih celoštevilskega linearnega programiranja,
-bi morala definirati spremenljivke x_i,j, ki so lahko 0 ali 1 in sicer 0, ko vozlišče i nima barve j in 1, ko jo ima.
-In tako za vse i od 1 do n(če je n število vseh vozlišč v grafu), in prav tako za j, 
-ker ima graf v najslabšem primeru kromatično število toliko, kot ima vozlišč. 
-Nato bi postavili še omejitve, da ima vsako vozlišče 1 barvo. Če sestavimo tak algoritem imamo torej:
-    - n*n različnih spremenljivk
-    - 2^(n*n) različnih možnosti za preveriti, če je dopustna rešitev (ker je x_i,j lahko 0 ali 1)
-    (npr. če je n=10 je možnosti 10^30)
-Glede na časovno zahtevnost se nama je zdelo veliko bolje, da določiva spremenljivke x_i, 
-ki je lahko od 1 do n in predstavlja katero barvo ima vozlišče i (npr. 1 je modra, 2 je rdeča, 3 je rumena...)
-Pri takem algoritmu samo ne moremo sestaviti linearne omejitve, ampak preverimo samo ali je x_i različen od x_j za različna i in j.
-Imamo pa:
-    -n različnih spremenljivk
-    -n^n (e^(n*ln(n))) različnih možnosti za preveriti, če je dopustna rešitev (vsak x_i ima lahko n različnih barv)
-    (npr. če je n=10 je možnosti 10^10)
 
 
 http://www.fmf.uni-lj.si/~skreko/Gradiva/BG-skripta.pdf
+
+https://www.google.si/url?sa=t&rct=j&q=&esrc=s&source=web&cd=7&ved=0ahUKEwjLyaLH6Z7SAhXGOxoKHa_wCLEQFgg9MAY&url=http%3A%2F%2Fwww.dlib.si%2Fstream%2FURN%3ANBN%3ASI%3ADOC-CUZZTRTY%2F939e2643-262e-421f-8553-3b7853e2982a%2FPDF&usg=AFQjCNE9tWTZDnl2McDyOwWbWy3msl-5HQ&sig2=Lua4lTCKtQJ6atFhdDYNbg&cad=rja
