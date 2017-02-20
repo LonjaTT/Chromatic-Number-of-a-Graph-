@@ -3,24 +3,24 @@
 
 def kombinacije(k,n):
     z=n-k
-    A=matrix(k,1)
-    komb=()
+    A=matrix(1,k)
+    komb=[]
     for i in range(k):
-        A[i,0]=1
+        A[0,i]=1
     for j in range(z):
-        x=matrix(k,1)
+        x=matrix(1,k)
         for m in range(j+1):
             if m==0:
-                x[m,0]=(z-j)
+                x[0,m]=(z-j)
             else:
-                x[m,0]=1
-        komb=komb+(x+A)
+                x[0,m]=1
+        komb.append(x+A)
         ali=True
         while ali:
             t=0
             desno=True
             while desno:
-                if x[0,0]==x[t+1,0]:
+                if x[0,0]==x[0,t+1]:
                     t=t+1
                 else:
                     desno=False
@@ -28,16 +28,16 @@ def kombinacije(k,n):
             spr1=True
             for u in range(t+1,k):
                 if (spr1)and not(spr2):
-                    if x[u,0]==0:
+                    if x[0,u]==0:
                         ali=False
                         spr1=False
                     else:
-                        if (x[u,0]+2)<=x[t,0]:
-                            x[t,0]=x[t,0]-1
-                            x[u,0]=x[u,0]+1
+                        if (x[0,u]+2)<=x[0,t]:
+                            x[0,t]=x[0,t]-1
+                            x[0,u]=x[0,u]+1
                             spr2=True
             if spr2:
-                komb=komb+(x+A)
+                komb.append(x+A)
             else:
                 ali=False
     return komb
