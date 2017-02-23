@@ -1,8 +1,60 @@
+#kombinacije vozlišč za k-obarvljiv graf z n vozlišči#
+
+def kombinacije(k,n):
+    z=n-k
+    A=matrix(1,k)
+    komb=[]
+    for i in range(k):
+        A[0,i]=1
+    if z>k:
+        a=k
+    else:
+        a=z
+    for j in range(a):
+        x=matrix(1,k)
+        for m in range(j+1):
+            if m==0:
+                x[0,m]=(z-j)
+            else:
+                x[0,m]=1
+        komb.append(x+A)
+        ali=True
+        while ali:
+            t=0
+            desno=True
+            while desno:
+                if x[0,0]==x[0,t+1]:
+                    t=t+1
+                    if t==k-1:
+                        desno=False
+                else:
+                    desno=False
+            spr2=False
+            spr1=True
+            for u in range(t+1,k):
+                if (spr1)and not(spr2):
+                    if x[0,u]==0:
+                        ali=False
+                        spr1=False
+                    else:
+                        if (x[0,u]+2)<=x[0,t]:
+                            x[0,t]=x[0,t]-1
+                            x[0,u]=x[0,u]+1
+                            spr2=True
+            if spr2:
+                komb.append(x+A)
+            else:
+                ali=False
+    return komb
+
+kombinacije(4,13)
+︡0c86fb07-976f-4ee1-89ef-4e6d6179c93d︡{"stdout":"[[10  1  1  1], [9 2 1 1], [8 3 1 1], [7 4 1 1], [6 5 1 1], [8 2 2 1], [7 3 2 1], [6 4 2 1], [5 5 2 1], [5 4 3 1], [4 4 4 1], [7 2 2 2], [6 3 2 2], [5 4 2 2], [4 4 3 2], [4 3 3 3]]\n"}︡{"done":true}
+︠b10607d7-856c-48db-ba6b-c6a72d304f21s︠
 #M = množica velikosti množic točk n-obarvljivega grafa#
 #npr. graf je 4 obarvljiv, M je lahko (1,1,1,3) kar pomeni, da ima graf 1 točko obarvano s 1. barvo, 1 točko z 2., 1 točko s 3. barvo in 3 točke s četrto barvo#
-M=(2,2,3,1)
+#M=(2,2,3,1)#
 
-def pretvori(G):
+def pretvorivA(G):
     z = 1
     for P in G:
         for j in P:
@@ -13,6 +65,19 @@ def pretvori(G):
         A[(i-1),(j-1)]=1
         A[(j-1),(i-1)]=1
     return A
+
+def pretvorivG(A):
+    x=1
+    G=[]
+    for z in A:
+        if x==1:
+            m=len(z)
+            x+=1
+    for i in range(m):
+        for j in range(i,m):
+            if A[i,j]==1:
+                G.append(((i+1),(j+1)))
+    return G
 
 def generiraj_polni(M):
     n=0
@@ -33,13 +98,5 @@ def generiraj_polni(M):
                 for f in range(n):
                     if X[d,f]==0:
                         G=G+[((e+1),(f+1))]
-    A=pretvori(G)
-    return(G,'....',A)
-
-S=generiraj_polni(M)
-print S
-
-
-X = pretvori(S)
-G=Graph(X)
-G.show()
+    A=pretvorivA(G)
+    return(A)
